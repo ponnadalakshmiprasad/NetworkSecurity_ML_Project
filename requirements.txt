@@ -1,0 +1,19 @@
+pandas
+numpy
+python-dotenv
+certifi
+pymongo
+pymongo[srv]==3.12
+scikit-learn
+scipy
+dill
+pyyaml
+joblib
+xgboost
+mlflow
+dagshub
+-e .
+
+# “-e .” is read by pip. It tells pip to install the current project in editable mode.
+# This triggers execution of setup.py, which installs the package and creates
+# metadata in a NetworkSecurity.egg-info directory.

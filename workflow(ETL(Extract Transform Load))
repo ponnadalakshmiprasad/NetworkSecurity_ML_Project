@@ -1,0 +1,51 @@
+EXTRACT
+-------
+“extract step pipeline is push the data into the mongodb and extract it from mongodb using data_ingestion”.
+
+External data (CSV, S3, APIs)
+↓
+Push to MongoDB
+↓
+Pull from MongoDB (data_ingestion)
+
+
+TRANSFORM
+---------
+“clean and split the data and transformation training use data_transformation and model_training to transform the data and create the models for both transformation and predicting and store in directory”.
+
+This step includes:
+Data cleaning
+Feature engineering
+Train–test split
+Training transformation model (preprocessor)
+Training prediction model
+
+TRAIN (ML-specific, not ETL):
+
+Train ML model
+Save preprocessor + model
+(model_training)
+
+Storing:
+transformed datasets
+preprocessing object
+trained model artifacts
+This entire block is TRANSFORM in an ML-oriented ETL pipeline.
+
+Data cleaning
+Feature engineering
+Train/test split
+Preprocessing pipeline
+(data_transformation)
+
+
+
+LOAD
+----
+“using model_evaluation we use those transformation and predicting model to perform prediction on new data by loading the models and storing this predictions in the external source like mongodb this step is load”.
+
+Store:
+- Raw data
+- Processed data
+- Trained models
+- Predictions

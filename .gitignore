@@ -1,0 +1,10 @@
+venv
+test_mongodb.py
+.github
+.DS_Store
+*.pkl
+mlflow.db
+mlruns/
+__pycache__/
+*.pyc
+.env
