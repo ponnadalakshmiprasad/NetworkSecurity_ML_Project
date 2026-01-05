@@ -1,6 +1,6 @@
 columns:
-  - having_IPhaving_IP_Address: int64
-  - URLURL_Length: int64
+  - having_IP_Address: int64
+  - URL_Length: int64
   - Shortining_Service: int64
   - having_At_Symbol: int64
   - double_slash_redirecting: int64

@@ -1,3 +1,5 @@
+from NetworkSecurity.utils.main_utils.utils import save_object
+from bokeh.layouts import column
 from dotenv import load_dotenv
 from NetworkSecurity.exception.exception import NetworkSecurityException
 from NetworkSecurity.logging.logger import logging
@@ -30,8 +32,12 @@ class DataIngestion:
             
             df.replace({"na":np.nan},inplace=True)
 
+            if "index" in df.columns:
+                df=df.drop(columns=["index"])
+
             return df
             
+
         
         except Exception as e:
             raise NetworkSecurityException(e,sys)
@@ -47,7 +53,7 @@ class DataIngestion:
             logging.info("The feature store directory is created")
             print(dir_path)
             print(feature_store_path)
-            dataframe.to_csv(feature_store_path,index=False,header=False)
+            dataframe.to_csv(feature_store_path,index=False,header=True)
             return dataframe
             
 
@@ -59,6 +65,14 @@ class DataIngestion:
     def data_train_test_split(self,dataframe1:pd.DataFrame):
         try:
             logging.info("Enter the data_train_test_split method")
+            features_names=list(dataframe1.columns)
+            print(features_names)
+
+            os.makedirs(os.path.dirname(self.data_ingestion_config.features_name_file_path),exist_ok=True)
+
+            save_object(file_path=self.data_ingestion_config.features_name_file_path,object=features_names)
+
+            save_object("final_model/features_names.pkl",features_names)
 
             train_set,test_set=train_test_split(dataframe1,test_size=self.data_ingestion_config.train_test_split_ratio,random_state=42)
 

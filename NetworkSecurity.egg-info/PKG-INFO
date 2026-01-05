@@ -17,3 +17,6 @@ Requires-Dist: joblib
 Requires-Dist: xgboost
 Requires-Dist: mlflow
 Requires-Dist: dagshub
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: python-multipart

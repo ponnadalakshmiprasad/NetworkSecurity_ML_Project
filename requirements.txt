@@ -12,6 +12,9 @@ joblib
 xgboost
 mlflow
 dagshub
+fastapi
+uvicorn
+python-multipart
 -e .
 
 # “-e .” is read by pip. It tells pip to install the current project in editable mode.

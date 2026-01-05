@@ -15,7 +15,7 @@ from NetworkSecurity.exception.exception import NetworkSecurityException
 from NetworkSecurity.logging.logger import logging
 from dotenv import load_dotenv
 load_dotenv()
-mongodb_url=os.getenv("MONGODB_URL")
+mongodb_url=os.getenv("MONGO_DB_URL")
 
 ca=certifi.where()#certifi.where() returns the file path to the trusted CA certificate bundle used for SSL verification.
 #certifi.where() returns the file path to the trusted CA certificate bundle used for SSL verification.
@@ -30,7 +30,7 @@ class NetworkSecurityDataPusher:#for extracting the data form the csv file and p
         try:
             logging.info("Enter the csv_to_json_conversion method")
             data=pd.read_csv(file_path)#reading the csv file using the as argument
-            data.reset_index(drop=True, inplace=True)#“Reset the DataFrame index to a clean sequential index (0,1,2,…), discard the old index, and apply the change directly to data.”
+            data.reset_index(drop=True, inplace=True)#Reset the DataFrame index to a clean sequential index (0,1,2,…), discard the old index, and apply the change directly to data.”
             records=json.loads(data.to_json(orient="records"))
             # records=list(json.loads(data.T.to_json()).values())
             # data.T is used to transpose the DataFrame
@@ -165,9 +165,9 @@ if __name__=="__main__":
         push_data=NetworkSecurityDataPusher()
         database="NetworkSecurity"
         collections="NetworkSecurity_data"
-        File_Path="/Users/prasad/Desktop/ML_practice/ML_Resume_Projects/NetworkSecurity_ML_project/network_data/dataset.csv"
+        File_Path="/Users/prasad/Desktop/ML_practice/ML_Resume_Projects/NetworkSecurity_ML_project/network_data/phisingData.csv"
         records=push_data.csv_to_json_conversion(file_path=File_Path)
-        print(records)
+        # print(records)
         no_of_records=push_data.push_data_to_mongodb(records,database,collections)
         logging.info(f"no of records pushed to mongodb:{no_of_records}")
         print(no_of_records)

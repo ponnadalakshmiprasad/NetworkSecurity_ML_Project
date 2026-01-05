@@ -3,7 +3,7 @@ import os
 import sys
 from NetworkSecurity.exception.exception import NetworkSecurityException
 from NetworkSecurity.logging.logger import logging
-
+from sklearn.pipeline import Pipeline
 
 
 class NetworkModel:

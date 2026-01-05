@@ -23,7 +23,10 @@ class DataIngestionConfig:
 
         self.testing_file_path=os.path.join(self.data_ingestion_ingested_dir,training_pipeline.TEST_FILE_NAME)
 
+        self.features_name_dir=os.path.join(self.data_ingestion_ingested_dir,training_pipeline.DATA_INGESTION_FEATURE_NAME_DIR)
 
+        self.features_name_file_path=os.path.join(self.features_name_dir,training_pipeline.DATA_INGESTION_FEATURES_NAME_FILE)
+        
         self.train_test_split_ratio=training_pipeline.DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO
         self.collection_name=training_pipeline.DATA_INGESTION_COLLECTION_NAME
         self.database_name=training_pipeline.DATA_INGESTION_DATABASE_NAME
